@@ -1,6 +1,8 @@
 //import express and path
 const express = require('express');
 const path = require('path');
+const fs = require('fs')
+const api = require('./routes/index.js');
 
 const notes = require('./db/db.json')
 
@@ -13,6 +15,7 @@ const app = express();
 //middleware to parse json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/api', api);
 
 //static middleware
 app.use(express.static('public'));

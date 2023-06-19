@@ -41,4 +41,4 @@ notes.post('/', (req, res) => {
 
 // })
 
-module.exports = tips;
+module.exports = notes;
