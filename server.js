@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 
-const notes = require('.db/db.json')
+const notes = require('./db/db.json')
 
 //Port that the server will run on
 const PORT = process.env.PORT || 3001;
