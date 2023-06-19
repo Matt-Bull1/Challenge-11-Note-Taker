@@ -36,9 +36,20 @@ notes.post('/', (req, res) => {
     }
 })
 
-// bonus if time 
-//notes.delete('/:id', (req, res) => {
+// Delete
+notes.delete('/:id', (req, res) => {
+    const noteId = req.params.id;
+    readFromFile('./db/db.json')
+        .then((data) => JSON.parse(data))
+        .then((json) => {
+            // Make array with all notes except the one trying to be deleted
+            const result = json.filter((note) => note.id !== noteId);
 
-// })
+            // Rewrite note file with the new array
+            writeToFile('./db/db.json', result);
+
+            res.json(`Note has been deleted`);
+        });
+});
 
 module.exports = notes;
